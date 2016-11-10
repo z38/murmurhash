@@ -1,0 +1,31 @@
+build: false
+platform: x86
+clone_folder: c:\projects\murmurhash
+
+cache:
+  - '%LOCALAPPDATA%\Composer\files'
+
+init:
+  - SET PATH=C:\Program Files\OpenSSL;c:\tools\php;%PATH%
+
+install:
+  - cinst -y OpenSSL.Light
+  - mkdir c:\tools\php
+  - cd c:\tools\php
+  - appveyor DownloadFile http://windows.php.net/downloads/releases/php-7.0.13-nts-Win32-VC14-x86.zip -FileName php.zip
+  - 7z x php.zip
+  - copy php.ini-production php.ini /Y
+  - echo date.timezone="UTC" >> php.ini
+  - echo extension_dir=ext >> php.ini
+  - echo extension=php_openssl.dll >> php.ini
+  - echo extension=php_mbstring.dll >> php.ini
+  - echo extension=php_intl.dll >> php.ini
+  - echo extension=php_gmp.dll >> php.ini
+  - echo memory_limit=1G >> php.ini
+  - cd %APPVEYOR_BUILD_FOLDER%
+  - php -r "readfile('http://getcomposer.org/installer');" | php
+  - php composer.phar install --no-interaction --no-progress
+
+test_script:
+  - cd %APPVEYOR_BUILD_FOLDER%
+  - vendor\bin\phpunit.bat
