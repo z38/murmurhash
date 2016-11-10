@@ -1,0 +1,32 @@
+{
+    "name": "z38/murmurhash",
+    "type": "library",
+    "license": "MIT",
+    "description": "Murmur3F implementation for PHP",
+    "keywords": ["hash", "murmur", "murmurhash", "murmurhash3", "murmur3a", "murmur3c", "murmur3f"],
+    "homepage": "https://github.com/z38/murmurhash",
+    "authors": [
+        {
+            "name": "z38",
+            "homepage": "https://github.com/z38"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.1",
+        "ext-gmp": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.2|~5.0",
+        "lastguest/murmurhash": "^1.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Z38\\MurmurHash\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Z38\\MurmurHash\\Tests\\": "tests/"
+        }
+    }
+}
