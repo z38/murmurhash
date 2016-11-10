@@ -25,7 +25,7 @@ abstract class HashTestCase extends PHPUnit_Framework_TestCase
         $hasher->write($hashes);
         $final = $hasher->sum();
 
-        $result = unpack('V', $final);
-        $this->assertSame($this->getVerificationValue(), $result[1]);
+        $result = strrev(substr($final, 0, 4));
+        $this->assertSame($this->getVerificationValue(), $result);
     }
 }

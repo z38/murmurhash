@@ -11,6 +11,6 @@ class Murmur3ATest extends HashTestCase
 
     protected function getVerificationValue()
     {
-        return 0xB0F57EE3;
+        return "\xB0\xF5\x7E\xE3";
     }
 }

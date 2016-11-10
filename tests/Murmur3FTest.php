@@ -13,7 +13,7 @@ class Murmur3FTest extends HashTestCase
 
     protected function getVerificationValue()
     {
-        return 0x6384BA69;
+        return "\x63\x84\xBA\x69";
     }
 
     /**
